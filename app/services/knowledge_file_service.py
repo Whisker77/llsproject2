@@ -30,7 +30,7 @@ class KnowledgeFileService:
         except Exception as e:
             logger.error(f"保存知识文件失败: {str(e)}", exc_info=True)
             raise
-    def update_knowledge_file(self, id,model_param: Dict[str, Any]) -> KnowledgeFile:
+    def update_knowledge_file(self, id, model_param: Dict[str, Any]) -> KnowledgeFile:
         logger.info('更改知识文件')
         try:
             knowledge_file = file_dao.update_file(id, model_param)
@@ -50,11 +50,29 @@ class KnowledgeFileService:
             logger.error(f'删除知识文件失败：: {str(e)}', exc_info=True)
             raise
 
-    def get_knowledge_file(self, filter_param: Dict[str, Any]) -> KnowledgeFile:
+    def get_knowledge_file(self, file_id: str) -> KnowledgeFile:
         logger.info('查询知识文件')
         try:
-            knowledge_file = file_dao.list_files(filter_param)
+            knowledge_file = file_dao.get_file_by_id(file_id)
             return knowledge_file
         except Exception as e:
             logger.error(f'查询知识文件失败:{str(e)}',exc_info=True)
+            raise
+
+    def list_knowledge_files(
+        self,
+        filter_param: Dict[str, Any],
+        page: int = 1,
+        per_page: int = 20
+    ) -> Dict[str, Any]:
+        logger.info('查询知识文件列表')
+        try:
+            knowledge_files = file_dao.list_files(
+                filters=filter_param,
+                page=page,
+                per_page=per_page
+            )
+            return knowledge_files
+        except Exception as e:
+            logger.error(f'查询知识文件列表失败:{str(e)}', exc_info=True)
             raise
