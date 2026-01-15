@@ -1,4 +1,4 @@
-from fastapi import status, UploadFile, File, Form
+from fastapi import status, UploadFile, File, Form,Query
 
 from .base_router import BaseRouter
 from ..services.knowledge_file_service import KnowledgeFileService
@@ -100,3 +100,6 @@ class FileHandleRouter(BaseRouter):
         except Exception as e:
             logger.error(f"Error uploading knowledge file: {str(e)}", exc_info=True)
             raise DatabaseException("Failed to upload knowledge file") from e
+
+
+

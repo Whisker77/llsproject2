@@ -1,7 +1,8 @@
 import uuid
 from typing import Dict, Any
 import logging
-from app.models.mysql.knowledge_file import KnowledgeFile,DatabaseManager
+from app.models.mysql.knowledge_file import KnowledgeFile
+from app.models.mysql.database_manager import DatabaseManager
 from app.dao.knowledge_file_dao import KnowledgeFileDAO
 from app.config import settings
 logger = logging.getLogger(__name__)
@@ -28,4 +29,32 @@ class KnowledgeFileService:
             return knowledge_file
         except Exception as e:
             logger.error(f"保存知识文件失败: {str(e)}", exc_info=True)
+            raise
+    def update_knowledge_file(self, id,model_param: Dict[str, Any]) -> KnowledgeFile:
+        logger.info('更改知识文件')
+        try:
+            knowledge_file = file_dao.update_file(id, model_param)
+            logger.info(f'知识文件更新成功！! ID: {knowledge_file.id}')
+            return knowledge_file
+        except Exception as e:
+            logger.error(f'更新知识文件失败：: {str(e)}', exc_info=True)
+            raise
+
+    def delete_knowledge_file(self, id):
+        logger.info('删除知识文件')
+        try:
+            knowledge_file_is_deleted = file_dao.delete_file(id)
+            logger.info(f'知识文件删除成功！ID:{id}')
+            return knowledge_file_is_deleted
+        except Exception as e:
+            logger.error(f'删除知识文件失败：: {str(e)}', exc_info=True)
+            raise
+
+    def get_knowledge_file(self, filter_param: Dict[str, Any]) -> KnowledgeFile:
+        logger.info('查询知识文件')
+        try:
+            knowledge_file = file_dao.list_files(filter_param)
+            return knowledge_file
+        except Exception as e:
+            logger.error(f'查询知识文件失败:{str(e)}',exc_info=True)
             raise
