@@ -70,7 +70,7 @@ class MinioClient:
         """
         try:
             # 处理文件内容
-            if hasattr(file_object, 'read'):
+            if hasattr(file_object, 'read'): #file_object是文件对象，就会有'read'属性
                 file_content = file_object.read()
                 file_size = len(file_content)
                 file_object.seek(0)  # 重置文件指针
@@ -164,7 +164,7 @@ class MinioClient:
                 bucket_name=bucket_name,
                 object_name=object_name,
                 expires=expires_in
-            )
+            ) #返回的是链接
         except S3Error as e:
             logger.error(f"生成预签名URL失败: {str(e)}")
             raise e
@@ -191,7 +191,7 @@ class MinioClient:
                 bucket_name=self.bucket_name,
                 object_name=object_name,
                 file_path=file_path
-            )
+            )  #把文件下载到file_path
             return file_path
         except S3Error as e:
             logger.error(f"MinIO下载失败: {str(e)}")

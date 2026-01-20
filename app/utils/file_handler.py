@@ -28,7 +28,7 @@ class UploadFile:
         uploaded_file = request.FILES['file']
 
         try:
-            # 1. 净化文件名（防止路径注入和特殊字符）
+            # 1. 净化文件名（防止路径注入和特殊字符） #\是转义符号
             safe_filename = re.sub(r'[^\w\-.]', '_', uploaded_file.name)
 
             # 2. 生成唯一文件名（避免冲突）
@@ -42,7 +42,7 @@ class UploadFile:
                 original_name=safe_filename,
                 bucket_name=bucket_name,
                 minio_object_name=minio_filename
-            )
+            )  #执行后返回的就是minio_object_name
 
             # 4. 生成访问URL（有效期7天）
             file_url = minio_client.get_presigned_url(
