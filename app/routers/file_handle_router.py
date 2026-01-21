@@ -44,7 +44,7 @@ class FileHandleRouter(BaseRouter):
         self.router.post(
             "/uploadFile",
             response_model=ApiResponse,
-            status_code=status.HTTP_201_CREATED,
+            status_code=status.HTTP_200_CREATED,
             summary="上传知识文件",
             description="上传文档文件（如PDF、TXT等）到系统，用于后续解析和处理",
             tags=["知识管理"]

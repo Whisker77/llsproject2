@@ -46,7 +46,7 @@ class ChunkService:
 
             # 策略配置
             chunking_strategy: Optional[ChunkingStrategy] = None,
-            metadata_strategy: Optional[MetadataStrategy] = None
+            metadata_strategy: Optional[MetadataStrategy] = None #参数要是MetadataStrategy类的实例
     ):
         # 初始化组件
         self.embeddings = self._init_embeddings(ollama_base_url, embedding_model)
@@ -79,15 +79,57 @@ class ChunkService:
         except Exception as e:
             raise RAGException(500, f"嵌入模型初始化失败：{str(e)}")
 
-    def _init_vector_store(self, connection_args: Dict, collection_name: str) -> Milvus:
+    def _init_vector_store(self,  collection_name: str) -> Milvus:
         """初始化Milvus向量存储"""
         try:
-            # 连接Milvus
-            connections.connect(**connection_args)
+            # 1. 定义连接参数（不含alias，alias在connect时指定）
+            connect_params = {
+                "host": self.milvus_host,
+                "port": self.milvus_port
+            }
 
-            # 检查集合是否存在，如果存在则删除（可选，根据需求调整）
-            if utility.has_collection(collection_name):
-                utility.drop_collection(collection_name)
+
+            # 2. 先建立与Milvus的连接（使用指定的alias）
+            if not connections.has_connection(self.milvus_default_alias):
+                connections.connect(
+                    alias=self.milvus_default_alias,  # 指定连接别名
+                    **connect_params
+                )
+                logger.info(f"已建立Milvus连接，别名：{self.milvus_default_alias}")
+            else:
+                logger.info(f"Milvus连接已存在，别名：{self.milvus_default_alias}")
+
+            logger.info(f"milvus_default_alias from .env :{self.milvus_default_alias},db:{self.milvus_db}")
+            # 3. 检查并创建数据库（修正create_database参数）
+            # 注意：db.list_database需要指定已建立的连接别名（using）
+            if self.milvus_db not in db.list_database(using=self.milvus_default_alias):
+                # 创建数据库只需指定db_name，无需collection_name
+                db.create_database(db_name=self.milvus_db, using=self.milvus_default_alias)
+                logger.info(f"创建Milvus数据库：{self.milvus_db}")
+            else:
+                logger.info(f"Milvus数据库已存在：{self.milvus_db}")
+
+            # 4. 切换到目标数据库
+            db.using_database(db_name=self.milvus_db, using=self.milvus_default_alias)
+            logger.info(f"已切换到Milvus数据库：{self.milvus_db}")
+
+
+            # 5. 初始化向量存储（使用已建立的连接）
+            connection_args = {
+                "host": self.milvus_host,
+                "port": self.milvus_port,
+                "db_name": self.milvus_db,
+                "alias": self.milvus_default_alias  # 这里可以指定已建立的连接别名
+            }
+            # # 连接Milvus
+            # connections.connect(**connection_args,db_name=settings.MILVUS_DEFAULT_DB)
+            #
+            # # 检查集合是否存在，如果存在则删除（可选，根据需求调整）
+            # # （可选）打印集合状态日志，便于排查但不执行删除
+            # if utility.has_collection(collection_name):
+            #     logger.info(f"Milvus集合已存在，直接复用：collection_name={collection_name}")
+            # else:
+            #     logger.info(f"Milvus集合不存在，将创建新集合：collection_name={collection_name}")
 
             # 创建新的集合
             vector_store = Milvus(
@@ -95,9 +137,8 @@ class ChunkService:
                 collection_name=collection_name,
                 connection_args=connection_args,
                 auto_id=True,
-                drop_old=True  # 删除旧集合
+                drop_old=False  # 删除旧集合
             )
-
             logger.info(f"Milvus集合创建成功：{collection_name}")
             return vector_store
         except Exception as e:
@@ -154,16 +195,16 @@ class ChunkService:
         try:
             # 使用UnstructuredMarkdownLoader加载文档
             loader = UnstructuredMarkdownLoader(
-                doc_path, mode="single", strategy="fast", encoding="utf-8"
+                doc_path, mode="elements", strategy="fast", encoding="utf-8"
             )
             docs = loader.load()
             if len(docs) == 0:
                 raise RAGException(400, "文档加载后为空")
-            logger.info(f"文档加载成功：{doc_path}（字符数：{len(docs[0].page_content)}）")
+            logger.info(f"文档加载成功：{doc_path}（字符数：{len(docs[0].page_content)}）,元数据：{docs[0].metadata}")
             return docs
         except UnicodeDecodeError:
             # 尝试GBK编码
-            loader = UnstructuredMarkdownLoader(doc_path, mode="single", encoding="gbk")
+            loader = UnstructuredMarkdownLoader(doc_path, mode="elements", encoding="gbk")
             docs = loader.load()
             logger.warning(f"用GBK编码加载文档：{doc_path}")
             return docs
@@ -205,7 +246,7 @@ class ChunkService:
             processed_chunks = self.metadata_strategy.process_metadata(chunks, minio_metadata)
 
             # 5. 添加到向量数据库
-            chunk_ids = self.vector_store.add_documents(processed_chunks)
+            chunk_ids = self.vector_store.add_documents(processed_chunks) #这时chunk是元数据
 
             # 6. 清理临时文件
             os.remove(local_path)

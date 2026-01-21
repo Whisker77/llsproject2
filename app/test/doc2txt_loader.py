@@ -39,7 +39,7 @@ class Doc2txtLoader(BaseLoader, ABC):
         elif not os.path.isfile(self.file_path):
             raise ValueError("File path %s is not a valid file or url" % self.file_path)
 
-    def load(self) -> List[Document]:
+    def load(self) -> List[Document]: #继承了ABC，那么必须要实现BaseLoader里的方法，比如这个load
         file_path = self.file_path  # 定义在try外部，确保except中可以访问
         temp_docx_path = None
 
@@ -55,15 +55,15 @@ class Doc2txtLoader(BaseLoader, ABC):
 
             # 显式导入client
             from comtypes import client
-            word = client.CreateObject('Word.Application')
-            word.Visible = False
+            word = client.CreateObject('Word.Application') #启动word应用程序
+            word.Visible = False #让word在后台运行不显示
 
-            abs_file_path = os.path.abspath(file_path)
+            abs_file_path = os.path.abspath(file_path) #相对路径转绝对路径
             doc = word.Documents.Open(abs_file_path)
 
-            # 创建临时文件
-            temp_docx_path = tempfile.NamedTemporaryFile(suffix='.docx', delete=False).name
-            doc.SaveAs(temp_docx_path, FileFormat=16)  # 16表示docx格式
+            # 创建临时文件 #temp_docx_path包含文件的路径、文件句柄（文件身份证）等信息
+            temp_docx_path = tempfile.NamedTemporaryFile(suffix='.docx', delete=False).name #程序退出后不删除
+            doc.SaveAs(temp_docx_path, FileFormat=16)  # 16表示docx格式，将doc存到temp_docx_path
             doc.Close()
             word.Quit()
 

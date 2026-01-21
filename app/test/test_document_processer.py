@@ -2,13 +2,13 @@ import os
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import List, Dict, Any, Callable
-from langchain.document_loaders import PyPDFLoader, UnstructuredWordDocumentLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter, CharacterTextSplitter
+from langchain_community.document_loaders import PyPDFLoader, UnstructuredWordDocumentLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter, CharacterTextSplitter
 from langchain_community.document_loaders import (
     Docx2txtLoader
 )
-from doc_txt_loader import Doc2txtLoader
-from langchain.schema import Document
+from doc2txt_loader import Doc2txtLoader
+from langchain_core.documents import Document
 import time
 from pathlib import Path
 
@@ -84,7 +84,7 @@ class DocumentProcessor:
 
             with self.lock:
                 print(f"✓ 完成处理: {file_path} -> 生成 {len(split_documents)} 个块")
-
+            #每次限制一个线程打印
             return split_documents
 
         except Exception as e:
@@ -213,10 +213,16 @@ def main():
     missing_deps = check_dependencies()
     install_missing_dependencies(missing_deps)
     # 模拟文件路径（请替换为实际文件路径）
+    current_file_dir = Path(__file__).parent
+    # 向上回到aiagent目录 → aiagent/
+    project_root = current_file_dir.parent.parent
+    # 拼接utils/docs路径 → aiagent/utils/docs/
+    docs_dir = project_root / "docs"
+
     sample_files = [
-        "./docs/中华人民共和国劳动合同法.pdf",
-        "./docs/合同违法行为监督处理办法.docx",
-        "./docs/合同法案例.doc"
+        str(docs_dir / "中华人民共和国劳动合同法.pdf"),
+        str(docs_dir / "合同违法行为监督处理办法.docx"),
+        str(docs_dir / "合同法案例.doc")
     ]
 
     # 创建实际测试文件（仅用于演示）
