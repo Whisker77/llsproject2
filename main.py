@@ -41,7 +41,7 @@ app = FastAPI()
 app.include_router(FileHandleRouter()._register_routes(), prefix="/api/v1/file")
 app.include_router(ChunkRouter()._register_routes(), prefix="/api/v1/chunks")
 app.include_router(ChatBotQueryRouter()._register_routes(), prefix="/api/v1/rag")
-app.include_router(KnowledgeFileRouter()._register_routes(), prefix="/api/v1/kb")
+# app.include_router(KnowledgeFileRouter()._register_routes(), prefix="/api/v1/kb")
 # app.include_router(AgentRouter()._register_routes(), prefix="/api/v1/agent")
 # app.include_router(Text2EchartsRouter()._register_routes(), prefix="/api/v1/bi")
 

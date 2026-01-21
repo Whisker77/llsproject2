@@ -2,7 +2,7 @@ import logging
 from typing import List, Dict
 
 import jieba
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 
 from app.exceptions.rag_exception import RAGException

@@ -14,7 +14,7 @@ class KnowledgeFileDAO:
             new_file = KnowledgeFile(**file_data)
             session.add(new_file)
             session.commit()
-            session.refresh(new_file)   #同步
+            session.refresh(new_file)   #同步 更新session
             # 在session关闭前获取id
             # 如果需要，可以将对象从session中分离，以免后续访问属性出错
             session.expunge(new_file) #让new_file与session解除关联

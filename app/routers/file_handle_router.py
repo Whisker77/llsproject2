@@ -44,7 +44,7 @@ class FileHandleRouter(BaseRouter):
         self.router.post(
             "/uploadFile",
             response_model=ApiResponse,
-            status_code=status.HTTP_200_CREATED,
+            status_code=status.HTTP_201_CREATED,
             summary="上传知识文件",
             description="上传文档文件（如PDF、TXT等）到系统，用于后续解析和处理",
             tags=["知识管理"]
@@ -76,7 +76,7 @@ class FileHandleRouter(BaseRouter):
             logger.info(f"KB_BUCKET_NAME:{KB_BUCKET_NAME}")
             uploaded_object = await uploaded_file.upload_file_form(file,
                                                                    KB_BUCKET_NAME)  # 假设upload_file方法已适配FastAPI的UploadFile
-
+#uploaded_object 是元数据字典
             if not uploaded_object:
                 raise DatabaseException("Failed to upload file")
 
