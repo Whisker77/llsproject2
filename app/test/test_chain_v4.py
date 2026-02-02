@@ -1,3 +1,4 @@
+#总结和摘要
 from langchain_ollama import OllamaLLM, OllamaEmbeddings
 from langchain.chains.summarize import load_summarize_chain
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -49,7 +50,7 @@ def advanced_summarization(long_text, model_name="qwen3:0.6b"):
     # 创建摘要链 - 使用更兼容的配置
     chain = load_summarize_chain(
         llm=llm,
-        chain_type="map_reduce",
+        chain_type="map_reduce", #分别总结，合并，再一起总结
         verbose=True,
         token_max=4000,  # 限制最大 token 数
     )

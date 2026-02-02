@@ -1,5 +1,5 @@
 import jieba
-import jieba.posseg as pseg  # 用于词性标注
+import jieba.posseg as pseg  # 用于词性标注 Part-of-Speech Segmentation
 import os
 import logging
 from pathlib import Path
@@ -14,13 +14,13 @@ def init_jieba():
     设置用户词典和停用词路径（如果存在）
     """
     # 设置 Jieba 词典路径（如果有自定义需求）
-    dict_path = os.getenv("JIEBA_DICT_PATH", None)
+    dict_path = os.getenv("JIEBA_DICT_PATH", None) #JIEBA_DICT_PATH是本身就有的内置环境变量
     if dict_path and os.path.exists(dict_path):
         jieba.set_dictionary(dict_path)
         logger.info(f"已加载自定义词典: {dict_path}")
 
     # 加载用户自定义词典（如果存在）
-    user_dict_path = os.getenv("JIEBA_USER_DICT", str(Path.home() / "jieba_user_dict.txt"))
+    user_dict_path = os.getenv("JIEBA_USER_DICT", str(Path.home() / "jieba_user_dict.txt")) #就算这两个变量都不存在也不报错
     if os.path.exists(user_dict_path):
         jieba.load_userdict(user_dict_path)
         logger.info(f"已加载用户自定义词典: {user_dict_path}")
@@ -32,8 +32,8 @@ def init_jieba():
 
     logger.info("Jieba 初始化完成，可用于中文文本预处理")
     return {
-        "stopwords_path": stopwords_path,
-        "user_dict_path": user_dict_path
+        "stopwords_path": stopwords_path, #应该去除的词
+        "user_dict_path": user_dict_path  #应该切出来的词
     }
 
 
@@ -50,7 +50,7 @@ def tokenize_chinese_text(text, use_stopwords=False, config=None):
         分词后的词语列表
     """
     # 精确模式分词
-    words = jieba.cut(text, cut_all=False)
+    words = jieba.cut(text, cut_all=False) #jieba里已经加载分词词典
 
     # 如果需要停用词过滤
     if use_stopwords and config and config.get("stopwords_path"):

@@ -42,13 +42,14 @@ route_branch = RunnableBranch(
 
 # 5. 组合完整流程
 full_chain = (
-        RunnableParallel(text=RunnableLambda(lambda x: x))  # 创建初始输入字典
+        RunnableParallel(text=RunnableLambda(lambda x: x))  # 创建初始输入字典 #返回{"text": short_text}
         | {
             "key": RunnableLambda(route_function),  # 添加路由键
             "text": RunnableLambda(lambda x: x["text"])  # 保留原始文本
-        }
+        }   #返回包含key和text两个键的字典 ，再给到route_branch {"key":"short", "text":"今天天气很好，适合户外运动。"}
         | route_branch  # 路由到相应链
 )
+
 
 # 6. 测试
 if __name__ == "__main__":
@@ -72,4 +73,4 @@ if __name__ == "__main__":
     """
     long_result = full_chain.invoke(long_text)
     print(f"输入长度: {len(long_text)} 字符")
-print(f"输出: {long_result}")
+    print(f"输出: {long_result}")

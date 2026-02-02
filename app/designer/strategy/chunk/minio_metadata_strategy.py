@@ -16,7 +16,7 @@ class MinIOMetadataStrategy:
         current_time = datetime.now().isoformat() # 输出示例：2026-01-20T15:30:45.123456
         processed_chunks = []
 
-        for idx, chunk in enumerate(chunks, 1):
+        for idx, chunk in enumerate(chunks, 1): #chunk是一个document
             # 基础元数据
             base_meta = {
                 "file_id": minio_metadata.get("file_id", "unknown"),

@@ -70,12 +70,13 @@ def get_rag_service() -> RAGQueryService:
             # milvus_uri=RAG_CONFIG["milvus_uri"],
             milvus_host=settings.MILVUS_HOST,
             milvus_port=settings.MILVUS_PORT,
+            milvus_db=settings.MILVUS_DEFAULT_DB,
             milvus_token=RAG_CONFIG["milvus_token"],
             embedding_model=RAG_CONFIG["embedding_model"],
             llm_model=RAG_CONFIG["llm_model"],
             ollama_base_url=RAG_CONFIG["ollama_base_url"],
             dim=RAG_CONFIG["vector_dim"]
-        )
+        )  #返回实例对象
     except Exception as e:
         logger.error(f"RAG服务初始化失败：{str(e)}")
         raise DatabaseException(f"向量查询服务不可用：{str(e)}")
@@ -133,7 +134,7 @@ class ChatBotQueryRouter(BaseRouter):
                 user_question=request.question,
                 file_id=request.file_id,
                 collection_name=request.collection_name# 按file_id过滤Milvus中的分片
-            )
+            ) #大模型具体的回答，包含分数和源文档内容
 
             # 步骤4：整理响应数据（适配业务输出格式）
             response_data = {

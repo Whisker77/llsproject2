@@ -46,15 +46,15 @@ prompt = PromptTemplate.from_template(template)
 agent = {
             "input": lambda x: x["input"],
             "agent_scratchpad": lambda x: format_log_to_str(x["intermediate_steps"]),
-            "tools": lambda x: render_text_description(tools),
+            "tools": lambda x: render_text_description(tools),#Calculator，用于数学计算
             "tool_names": lambda x: ", ".join([t.name for t in tools]),
         } | prompt | llm | ReActSingleInputOutputParser()
 
 # 创建执行器
-agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True) #这个类可以让llm循环执行
 
 # 使用
-result = agent_executor.invoke({"input": "计算 9 的平方根是多少？"})
+result = agent_executor.invoke({"input": "计算 16 的平方根是多少？"})
 print(result["output"])
 
 

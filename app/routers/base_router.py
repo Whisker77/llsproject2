@@ -28,7 +28,7 @@ class BaseRouter:
          - error handling
          - response shaping
         """
-        @functools.wraps(func)
+        @functools.wraps(func)  #执行wrapper.__name__ = func.__name__
         async def wrapper(*args, **kwargs):
             try:
                 func_result = await func(*args, **kwargs)

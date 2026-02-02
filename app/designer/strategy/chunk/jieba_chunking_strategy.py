@@ -46,7 +46,7 @@ class JiebaChunkingStrategy:
 
         # 创建临时文档对象
         temp_doc = Document(page_content=segmented_text, metadata=original_metadata)
-        chunks = splitter.split_documents([temp_doc])
+        chunks = splitter.split_documents([temp_doc]) #意思是一个文档多个分片
 
         # 过滤过短的分片
         valid_chunks = [c for c in chunks if len(c.page_content.strip()) >= 50]

@@ -65,5 +65,15 @@ class ChunkRouter(BaseRouter):
             )
         except RAGException as e:
             logger.error(f"\n处理失败：[{e.code}] {e.message}", exc_info=True)
+            return ApiResponse(
+                status=e.code,
+                message=e.message,
+                data=None
+            )
         except Exception as e:
             logger.error(f"\n未知错误：{str(e)}", exc_info=True)
+            return ApiResponse(
+                status=500,
+                message="服务器内部错误",
+                data=None
+            )

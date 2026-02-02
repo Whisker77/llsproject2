@@ -21,7 +21,7 @@ def create_vector_store(documents, embedding_model):
 
     # 创建向量存储
     vectorstore = Chroma.from_documents(processed_docs, embedding_model)
-    return vectorstore
+    return vectorstore  #向量数据库对象
 
 
 # 使用示例 - 修改为使用 OllamaEmbeddings
@@ -31,6 +31,6 @@ embedding_model = OllamaEmbeddings(
     base_url="http://localhost:11434"  # Ollama 服务的地址，默认是 localhost:11434
 )
 markdown_file = "nrs2002_full.md"  # 替换为你的 Markdown 文件路径
-documents = load_and_split_markdown(markdown_file)
+documents = load_and_split_markdown(markdown_file) #分块的document
 # 假设 documents 是从 Markdown 文件加载的文档列表
 vectorstore = create_vector_store(documents, embedding_model)

@@ -1,6 +1,6 @@
 import os
 import jieba
-import jieba.analyse
+import jieba.analyse #切关键词
 from langchain.document_loaders import UnstructuredMarkdownLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
@@ -49,7 +49,7 @@ def jieba_tokenize(text: str) -> List[str]:
     Returns:
         分词后的词语列表
     """
-    return list(jieba.cut(text))
+    return list(jieba.cut(text)) #jieba.cut返回一个生成器
 
 
 def load_and_split_markdown(file_path: str, chunk_size: int = 500, chunk_overlap: int = 50) -> List[Document]:
@@ -69,7 +69,7 @@ def load_and_split_markdown(file_path: str, chunk_size: int = 500, chunk_overlap
     documents = loader.load()
 
     # 创建文本分割器
-    text_splitter = RecursiveCharacterTextSplitter(
+    text_splitter = RecursiveCharacterTextSplitter( #这个是把document对象切块的
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
         length_function=len,
@@ -79,8 +79,7 @@ def load_and_split_markdown(file_path: str, chunk_size: int = 500, chunk_overlap
     # 分割文档
     split_docs = text_splitter.split_documents(documents)
     logger.info(f"已将文档分割为 {len(split_docs)} 个块")
-
-    return split_docs
+    return split_docs #List[Document]
 
 
 def process_with_jieba(documents: List[Document]) -> List[List[str]]:
@@ -95,7 +94,7 @@ def process_with_jieba(documents: List[Document]) -> List[List[str]]:
     """
     all_tokens = []
     for i, doc in enumerate(documents):
-        tokens = jieba_tokenize(doc.page_content)
+        tokens = jieba_tokenize(doc.page_content) #-> list
         all_tokens.append(tokens)
         logger.info(f"文档块 {i + 1} 分词结果: {tokens[:10]}...")  # 只显示前10个词
 

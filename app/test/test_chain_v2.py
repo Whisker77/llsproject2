@@ -8,7 +8,7 @@ from typing import Dict, Any
 class ConversationManager:
     """对话管理器"""
 
-    def __init__(self, llm_model="modelscope.cn/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF:latest", system_message=None):
+    def __init__(self, llm_model="qwen3:0.6b", system_message=None):
         self.llm = OllamaLLM(model=llm_model)
         self.store = {}
         self.system_message = system_message or "你是一个友好的AI助手"
@@ -16,7 +16,7 @@ class ConversationManager:
         # 创建提示模板
         self.prompt = ChatPromptTemplate.from_messages([
             ("system", self.system_message),
-            MessagesPlaceholder(variable_name="history"),
+            MessagesPlaceholder(variable_name="history"), #指定session_id的history内容
             ("human", "{input}")
         ])
 
@@ -28,8 +28,8 @@ class ConversationManager:
             self.chain,
             self.get_session_history,
             input_messages_key="input",
-            history_messages_key="history",
-        ) #这个类是只有调用chat方法才会执行初始化。很离谱
+            history_messages_key="history"  #指定history的内容塞进用户输入，再一起给大模型
+        ) #
 
     def get_session_history(self, session_id: str) -> ChatMessageHistory:
         """获取会话历史"""
@@ -59,7 +59,6 @@ class ConversationManager:
 def main():
     # 创建对话管理器
     chat_manager = ConversationManager(
-        llm_model="modelscope.cn/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF:latest",
         system_message="你是一个友好的AI助手，乐于提供详细和具体的回答。"
     )
 
@@ -77,27 +76,17 @@ def main():
 
 if __name__ == "__main__":
     main()
-    chat_manager = ConversationManager(
-        llm_model="modelscope.cn/unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF:latest",
-        system_message="你是一个友好的AI助手，乐于提供详细和具体的回答。"
-    )
-    response1 = chat_manager.chat("数学问题", session_id="math_session")
-    response2 = chat_manager.chat("历史问题", session_id="history_session")
 
-    history = chat_manager.get_history("user_session_1")
-    for msg in history:
-        print(f"{msg.type}: {msg.content}")
 
-    chat_manager.clear_history("user_session_1")
+class CustomerServiceManager(ConversationManager):
+    def __init__(self):
+        super().__init__(
+            system_message="你是专业的客服助手，耐心解决客户问题",
+            llm_model="qwen3:0.6b"
+        )
 
-    technical_assistant = ConversationManager(
-        system_message="你是一个专业的技术专家，提供准确的技术解答"
-    )
-
-    creative_writer = ConversationManager(
-        system_message="你是一个有创意的作家，帮助用户进行创意写作"
-    )
-
-    customer_service = ConversationManager(
-        system_message="你是一个专业的客服代表，礼貌耐心地解决用户问题"
-    )
+    def escalate_to_human(self, session_id):
+        """将复杂问题转接给人工客服"""
+        history = self.get_history(session_id)
+        # 分析对话历史，决定是否转接
+        return len(history) > 10  # 例如：对话超过10轮则转接

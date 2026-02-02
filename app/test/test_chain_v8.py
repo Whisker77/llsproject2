@@ -5,7 +5,7 @@ from langchain.chains.sql_database.query import create_sql_query_chain  # 新版
 from langchain_ollama import OllamaLLM  # Ollama模型集成
 
 
-class HealthRiskAnalysisChain:
+class HealthRiskAnalysisChain:#chain1 = HealthR(uri1,llm1) chain2= HealthR(uri2,llm2)
     def __init__(self, db_uri, llm):
         # 1. 初始化数据库连接（支持MySQL、PostgreSQL等，需对应驱动）
         self.db = SQLDatabase.from_uri(db_uri)
@@ -63,11 +63,11 @@ if __name__ == "__main__":
     # 1. 修复1：初始化正确的Ollama模型（先执行命令下载）
     # 第一步：查看qwen可用模型：ollama search qwen
     # 第二步：下载模型（示例：下载0.5b轻量版）：ollama pull qwen:0.5b
-    llm = OllamaLLM(model="qwen3:8b")  # 替换为已下载的模型名（如qwen:1.8b）
+    llm = OllamaLLM(model="qwen3:0.6b",base_url='http://127.0.0.1:11434')  # 替换为已下载的模型名（如qwen:1.8b）
 
     # 2. 修复2：数据库连接适配（解决MySQL驱动问题）
     # 方案A：用pymysql驱动（Windows更易安装，需先执行：pip install pymysql）
-    db_uri = "mysql+pymysql://remote:zh&*DB2021@localhost:3306/test_db"
+    db_uri = "mysql+pymysql://root:123456@localhost:3306/test_db"
     # 方案B：用mysqlclient驱动（需先执行：pip install mysqlclient，Windows可能需额外配置）
     # db_uri = "mysql+mysqldb://remote:zh&*DB2021@localhost:3306/test_db"
 

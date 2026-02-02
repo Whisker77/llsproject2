@@ -1,0 +1,107 @@
+{
+    "tools": [
+        {
+            "name": "query_health_data",
+            "description": "查询健康数据",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "user_id": {
+                        "type": "string",
+                        "description": "用户ID"
+                    },
+                    "metrics": {
+                        "type": "string",
+                        "description": "要查询的指标，多个指标用逗号分隔，默认全部",
+                        "default": "all"
+                    }
+                },
+                "required": ["user_id"]
+            }
+        },
+        {
+            "name": "analyze_health_risk",
+            "description": "分析健康风险",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "age": {
+                        "type": "integer",
+                        "description": "年龄",
+                        "minimum": 0,
+                        "maximum": 120
+                    },
+                    "bmi": {
+                        "type": "number",
+                        "description": "身体质量指数",
+                        "minimum": 10,
+                        "maximum": 50
+                    },
+                    "health_conditions": {
+                        "type": "string",
+                        "description": "健康状况，多个用逗号分隔"
+                    }
+                },
+                "required": ["age", "bmi"]
+            }
+        },
+        {
+            "name": "nrs2002_assessment",
+            "description": "NRS2002营养风险评估",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "age": {
+                        "type": "integer",
+                        "description": "年龄",
+                        "minimum": 0,
+                        "maximum": 120
+                    },
+                    "bmi": {
+                        "type": "number",
+                        "description": "身体质量指数",
+                        "minimum": 10,
+                        "maximum": 50
+                    },
+                    "weight_change": {
+                        "type": "number",
+                        "description": "体重变化百分比（过去3个月）"
+                    },
+                    "disease_condition": {
+                        "type": "integer",
+                        "description": "疾病状况评分（0-3）",
+                        "minimum": 0,
+                        "maximum": 3
+                    }
+                },
+                "required": ["age", "bmi", "weight_change", "disease_condition"]
+            }
+        }
+    ],
+    "tool_mappings": {
+        "query_health_data": {
+            "display_name": "查询健康数据",
+            "input_prompts": {
+                "user_id": "用户ID",
+                "metrics": "指标 (默认all)"
+            }
+        },
+        "analyze_health_risk": {
+            "display_name": "分析健康风险",
+            "input_prompts": {
+                "age": "年龄",
+                "bmi": "BMI",
+                "health_conditions": "健康状况 (逗号分隔)"
+            }
+        },
+        "nrs2002_assessment": {
+            "display_name": "NRS2002营养评估",
+            "input_prompts": {
+                "age": "年龄",
+                "bmi": "BMI",
+                "weight_change": "体重变化",
+                "disease_condition": "疾病状况"
+            }
+        }
+    }
+}
