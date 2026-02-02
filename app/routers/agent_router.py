@@ -1,3 +1,4 @@
+import json
 import logging
 from typing import Optional
 
@@ -56,15 +57,24 @@ class AgentRouter(BaseRouter):
                 logger.info(f"after history_input: {history_input}")
                 user_input = f"{history_input},{user_input}"
                 logger.info(f"user_input: {user_input}")
-            response,res_content = agent.chat(user_input)
-            print(f"history_input:{response} \r\n{response['input']}")
-            redis_utils.set_params(history_key,response['input'])
+            result = agent.chat(user_input)
+            response, res_content = result if isinstance(result, tuple) else (None, result)
+            if isinstance(response, dict) and "input" in response:
+                logger.info(f"history_input:{response} \r\n{response['input']}")
+                redis_utils.set_params(history_key, response["input"])
+            if isinstance(res_content, str):
+                content = res_content.strip()
+                if content:
+                    try:
+                        res_content = json.loads(content)
+                    except json.JSONDecodeError:
+                        logger.debug("LLM返回非JSON文本，保持原样返回")
             # 保存用户档案
             agent._save_user_profile()
             return ApiResponse(
                 status=200,
                 message="success",
-                data={res_content}
+                data=res_content
             )
 
         except Exception as e:
