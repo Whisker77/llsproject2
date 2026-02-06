@@ -9,7 +9,7 @@ from app.utils.vanna_engine import vn
 from app.utils.string_utils import format_json
 from app.adapter.workflow_client import execute_workflow
 from app.utils.string_utils import extract_sql_after_escape_mark
-import re
+
 logger = logging.getLogger(__name__)
 
 

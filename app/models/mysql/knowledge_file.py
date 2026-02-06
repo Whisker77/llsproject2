@@ -1,11 +1,10 @@
 from datetime import datetime
 from sqlalchemy import create_engine, Column, String, Integer, DateTime, Text
-from sqlalchemy.ext.declarative import declarative_base
+
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.dialects.mysql import VARCHAR
 
-# 创建基类
-Base = declarative_base()
+from app.models.mysql.database_manager import Base
 
 
 class KnowledgeFile(Base):

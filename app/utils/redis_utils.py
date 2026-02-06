@@ -78,7 +78,7 @@ class RedisUtils:
                 value = self.rdb.lrange(key, 0, -1)
             elif key_type == 'set':
                 value = self.rdb.smembers(key)
-            elif key_type == 'zset':
+            elif key_type == 'zset': #有序集合
                 value = self.rdb.zrange(key, 0, -1, withscores=True)
             else:
                 value = "Unsupported type"
@@ -126,7 +126,7 @@ class RedisUtils:
         :param second: 默认7天
         :return:
         """
-        return self.rdb.expire(key, time=second)
+        return self.rdb.expire(key, time=second) #返回bool值，执行成功就是true
 
     def remove_expire(self, key):
         """

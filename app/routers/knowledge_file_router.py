@@ -1,4 +1,3 @@
-from pydantic import BaseModel
 from ..schemas.common import ApiResponse
 from .base_router import BaseRouter
 from fastapi import status,Path,Body,Query

@@ -319,7 +319,7 @@ class MultiTurnConversationManager:
             if should_use_tool and tool_name in self.tool_handler.tools:
                 # 提取参数并调用工具
                 parameters = self.tool_handler.extract_tool_parameters(tool_name, message)
-                tool = self.tool_handler.tools[tool_name]
+                tool = self.tool_handler.tools[tool_name] #取具体的tool
 
                 print(f"🔧 使用工具: {tool_name}, 参数: {parameters}")
                 tool_result = tool.invoke(parameters)

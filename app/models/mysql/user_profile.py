@@ -1,5 +1,5 @@
 from sqlalchemy import  Column, Integer, String,  DateTime, JSON,  Index
-from sqlalchemy.ext.declarative import declarative_base
+
 from sqlalchemy.orm import sessionmaker, relationship
 from datetime import datetime
 import os
@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger("UserProfile")
 
-Base = declarative_base()
+from app.models.mysql.database_manager import Base
 
 
 class UserProfile(Base):

@@ -121,7 +121,6 @@ class MemoryManager:
         """更新/创建用户档案到 user_profile 表"""
         if not self.db_session:
             raise ValueError(f"数据库会话未初始化 - 用户ID: {self.user_id}")
-
         try:
             # 1. 查询用户是否已有档案
             profile = self.db_session.query(UserProfile).filter_by(user_id=self.user_id).first()
@@ -129,7 +128,8 @@ class MemoryManager:
             if profile:
                 # 2. 已有档案：合并新数据（避免覆盖原有信息）
                 profile.basic_info = {**profile.basic_info, **basic_info}
-                profile.updated_at = datetime.now()
+                profile.updated_at = datetime.now() #更改都会被session传递
+                self.db_session.commit()
                 logger.info(f"用户档案更新成功 - 用户ID: {self.user_id}")
             else:
                 # 3. 无档案：创建新档案

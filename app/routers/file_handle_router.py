@@ -1,5 +1,4 @@
-from fastapi import (status, UploadFile, File, Form, Query,
-                     Path, Body)
+from fastapi import (status, UploadFile, File, Form)
 
 from .base_router import BaseRouter
 from ..services.knowledge_file_service import KnowledgeFileService
@@ -9,7 +8,6 @@ from ..utils.file_handler import UploadFile as FileUploader
 from ..config import settings
 from ..exceptions.base_api_exception import (
     DatabaseException,
-    NotFoundException,
     ValidationException,
     UnsupportedFileTypeException
 )

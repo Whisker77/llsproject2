@@ -1,12 +1,14 @@
 from sqlalchemy import  Column, Integer, String, Text, DateTime, JSON
-from sqlalchemy.ext.declarative import declarative_base
+
 from datetime import datetime
 import os
 import logging
 
+from app.models.mysql.database_manager import Base
+
 logger = logging.getLogger("ConversationHistory")
 
-Base = declarative_base()
+
 
 
 class ConversationHistory(Base):

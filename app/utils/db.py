@@ -56,7 +56,7 @@ def get_db_session() -> Session:
     db = None
     try:
         # 创建新会话
-        db = SessionLocal()
+        db = SessionLocal() #session_maker
         logger.debug(f"成功创建数据库会话（ID: {id(db)}）")
 
         #  yield 会话（支持 with 语句自动管理生命周期）
@@ -93,7 +93,8 @@ def init_db():
         from app.models.mysql.conversation_history import ConversationHistory
         from app.models.mysql.user_profile import UserProfile  # 导入所有 MySQL 模型
         # 基于模型创建表（若表已存在则不重复创建）
-        from sqlalchemy.ext.declarative import declarative_base as Base  # 导入你的 Base 类（declarative_base() 实例）
+        from app.models.mysql.database_manager import Base
+         # 导入你的 Base 类（declarative_base() 实例）
         Base.metadata.create_all(bind=engine)
         logger.info("数据库表结构初始化成功（已存在的表将跳过）")
     except Exception as e:
