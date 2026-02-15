@@ -1,7 +1,207 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="09df99be-ecf1-49ab-8eb9-410476ed8ecb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aiagent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aiagent.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.28_homework.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1.28_homework.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.29_homework.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1.29_homework.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/adapter/bi_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/adapter/bi_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/adapter/universal_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/adapter/universal_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/adapter/workflow_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/adapter/workflow_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/chat/nutritionist_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/chat/nutritionist_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dao/knowledge_file_dao.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/dao/knowledge_file_dao.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/designer/strategy/chunk/chunking_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/designer/strategy/chunk/chunking_strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/designer/strategy/chunk/jieba_chunking_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/designer/strategy/chunk/jieba_chunking_strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/designer/strategy/chunk/metadata_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/designer/strategy/chunk/metadata_strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/designer/strategy/chunk/minio_metadata_strategy.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/designer/strategy/chunk/minio_metadata_strategy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/base_api_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/base_api_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/exceptions/rag_exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/exceptions/rag_exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/manager/memory_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/manager/memory_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/mysql/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/mysql/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/mysql/conversation_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/mysql/conversation_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/mysql/database_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/mysql/database_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/mysql/knowledge_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/mysql/knowledge_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/mysql/user_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/mysql/user_profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/agent_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/agent_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/base_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/base_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/chatbot_query_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/chatbot_query_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/chunk_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/chunk_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/file_handle_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/file_handle_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/knowledge_file_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/knowledge_file_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/text2echarts_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/text2echarts_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routers/text2sql_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routers/text2sql_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/common.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/common.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/knowledge_file.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/knowledge_file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/ai_cs_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/ai_cs_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/chunk_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/chunk_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/knowledge_file_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/knowledge_file_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/nutritionist_agent_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/nutritionist_agent_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/rag_query_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/rag_query_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/rag_query_service_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/rag_query_service_v4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/redis_rag_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/redis_rag_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/technical_docs_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/technical_docs_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/agent/agent1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/agent/agent1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/agent/agent2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/agent/agent2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/ai_terms_dict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/ai_terms_dict.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/chains/test_chain1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/chains/test_chain1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/chains/test_chain2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/chains/test_chain2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/chains/test_chain3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/chains/test_chain3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/chains/test_chain4.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/chains/test_chain4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/chains/test_chain5.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/chains/test_chain5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/conversation/kg_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/conversation/kg_sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/conversation/multi_turn_conversation_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/conversation/multi_turn_conversation_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/dify/test_text2sql_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/dify/test_text2sql_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/dify/test_universal_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/dify/test_universal_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/dify/test_workflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/dify/test_workflow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/doc2txt_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/doc2txt_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/langchain_local/messages/demo_message2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/langchain_local/messages/demo_message2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/langchain_local/messages/demo_message3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/langchain_local/messages/demo_message3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template4.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/langchain_local/template/demo_template4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/config/tools_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/config/tools_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/http_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/http_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/http_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/http_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/sse_mcp_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/sse_mcp_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/sse_mcp_client_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/sse_mcp_client_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/sse_mcp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/sse_mcp_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/stdio_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/stdio_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/stdio_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/stdio_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/tools_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/tools_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/websocket_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/websocket_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/mcp/websocket_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/mcp/websocket_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory10.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory10.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory4.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory5.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory6.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory7.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory8.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/memory/memory9.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/memory/memory9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v5.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v6.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_chain_v8.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_chain_v8.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_document_processer.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_document_processer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_jieba.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_jieba.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_jieba_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_jieba_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_jieba_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_jieba_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_jieba_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_jieba_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_homework.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_homework.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v3.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v4.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v5.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v6.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_milvus_v7.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_milvus_v7.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_redis.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_redis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/test/test_redis_v1.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/test/test_redis_v1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/file_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/file_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/minio_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/minio_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/nltk_init.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/nltk_init.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/redis_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/redis_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/string_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/string_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/vanna_engine.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/vanna_engine.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils/vanna_train_examples.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils/vanna_train_examples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/check_milvus.py" beforeDir="false" afterPath="$PROJECT_DIR$/check_milvus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/console.py" beforeDir="false" afterPath="$PROJECT_DIR$/console.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/nrs2002_full.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/nrs2002_full.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jieba_user_dict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/jieba_user_dict.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/.idea/pythonProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/.idea/pythonProject.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonProject/6.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonProject/6.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/Users/zikaihu/Desktop/AI/1120/pycharmproject/aiagent" value="39bo532BUguy0v9JzZ9W2Zklp6l" />
+    </persistenceIdMap>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="39bo532BUguy0v9JzZ9W2Zklp6l" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.6.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "git-widget-placeholder": "new",
+    "last_opened_file_path": "/Users/zikaihu/Desktop/AI/1120/pycharmproject/aiagent",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-PY-253.30387.173" />
+        <option value="bundled-python-sdk-4762d8aabb82-6d6dccd035ac-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.30387.173" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="09df99be-ecf1-49ab-8eb9-410476ed8ecb" name="Changes" comment="" />
+      <created>1770973944535</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1770973944535</updated>
+      <workItem from="1770973945744" duration="76000" />
+      <workItem from="1770974027306" duration="24051000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/aiagent$6.coverage" NAME="6 Coverage Results" MODIFIED="1771141338908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pythonProject" />
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
